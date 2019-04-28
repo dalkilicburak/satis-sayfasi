@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Urun Bilgisi</title>
+    <link rel="stylesheet" type="text/css" href="Untitled-1.css">
+
+</head>
+<body>
+    <div id="bilgi">
+        <table width="100" border="0" cellpadding="10" cellspacing="10">
+            <tr>  
+                <td width="100" height="100" valign="top">
+                <div class="urun-bilgi">
+                    <h1> {{ urun }} </h1>
+                </div>
+                
+                <div class="urun-photo">
+                        <img v-bind:src="resim">
+                </div>
+
+                <div class="urun-miktari">
+                        <p v-if="sayi>10">Stokta Var</p>
+                        <p v-else-if="sayi<=10&&sayi>0">Tükenmek Üzere</p>
+                        <p v-else="sayi=0">Tükendi</p>
+                </div>
+
+                <div v-for="madde in maddeler">
+                        <ul>
+                            <li>
+                                {{ madde }}
+                            </li>
+                        </ul>
+                 </div>
+
+                 <div v-for="detay in detaylar":key="detay.id">
+                        <p v-on:click="updateProduct(detay.resim12)" > {{ detay.color }} </p>
+                </div>
+                </td>
+                <td width="100" height="100" valign="top">
+                    <button v-on:click='addToCart'> Sepete Ekle </button>
+                    <button v-on:click='delete1'> Sepetten Cikar </button>
+                </td>
+                <td width="100" height="100" valign="top">
+                    <div class="Sayi">
+                        <p> Sayi({{card}}) </p>
+                    </div>
+                </td>
+            </tr>    
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="bilgi1.js"></script>
+</body>
+</html>
